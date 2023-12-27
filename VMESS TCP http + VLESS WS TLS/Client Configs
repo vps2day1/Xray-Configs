@@ -1,0 +1,7 @@
++++++ Replace Cloudflare domain in XXXX
+
++++++ V2rayNG Config
+vless://9c2c0bbc-2b26-4567-9f18-b5b369085719@www.speedtest.net:443?path=%2Fc6fbde88-c164-4d25-87dd-61f8f16893cd%3Fed%3D2048&security=tls&encryption=none&alpn=h2,http/1.1&host=XXXX&fp=chrome&type=ws&sni=XXXX#Sarina-CDN
+
++++++ Sing-Box Config
+vless://9c2c0bbc-2b26-4567-9f18-b5b369085719@www.speedtest.net:443?path=%2Fc6fbde88-c164-4d25-87dd-61f8f16893cd%3Fed%3D2048&security=tls&encryption=none&alpn=http/1.1&host=XXXX&fp=chrome&type=ws&sni=XXXX#Sarina-CDN
