@@ -128,10 +128,18 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
+         "type": "field",
+         "outboundTag": "blocked",
+         "protocol": [
+           "bittorrent"
+         ]
+      },
+      {
         "type": "field",
         "ip": [
           "geoip:cn",
-          "geoip:ir"
+          "geoip:ir",
+          "geoip:private"
         ],
         "outboundTag": "block"
       },
