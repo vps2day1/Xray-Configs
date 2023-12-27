@@ -1,0 +1,37 @@
+echo "net.ipv4.tcp_fastopen = 3" | sudo tee -a /etc/sysctl.conf
+echo "net.core.default_qdisc = fq" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control = bbr" | sudo tee -a /etc/sysctl.conf
+sysctl -p && reboot
+
+mkdir Argo && cd Argo
+wget https://github.com/cloudflare/cloudflared/releases/download/2023.10.0/cloudflared-linux-amd64 && chmod +x cloudflared-linux-amd64
+./cloudflared-linux-amd64 tunnel --url localhost:54321 --edge-ip-version auto --no-autoupdate -protocol http2
+++++++ Save Domain name given by Cloudflare and replace in client configs where XXXX
+Ctl + C
+nano /etc/systemd/system/argo.service
+
++++++ Copy this section:
+-------------------------------------
+[Unit]
+Description=Argo Tunnel Service
+
+
+[Service]
+Type=idle
+User=root
+WorkingDirectory=/root
+ExecStart=/root/Argo/cloudflared-linux-amd64 tunnel --url localhost:54321 --edge-ip-version auto --no-autoupdate -protocol http2
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+-------------------------------------
+
+systemctl start argo.service
+systemctl enable argo.service
+
++++++ V2rayNG Config
+vless://9c2c0bbc-2b26-4567-9f18-b5b369085719@www.speedtest.net:443?path=%2Fc6fbde88-c164-4d25-87dd-61f8f16893cd%3Fed%3D2048&security=tls&encryption=none&alpn=h2,http/1.1&host=XXXX&fp=chrome&type=ws&sni=XXXX#Sarina-CDN
+
++++++ Sing-Box Config
+vless://9c2c0bbc-2b26-4567-9f18-b5b369085719@www.speedtest.net:443?path=%2Fc6fbde88-c164-4d25-87dd-61f8f16893cd%3Fed%3D2048&security=tls&encryption=none&alpn=http/1.1&host=XXXX&fp=chrome&type=ws&sni=XXXX#Sarina-CDN
