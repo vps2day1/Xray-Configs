@@ -116,14 +116,14 @@
     {
       "protocol": "wireguard",
       "settings": {
-        "secretKey": "0Mhryb2WzLOR/0a4Zf1zGJa5rlES0RV0nM4D8J8DLlg=",
+        "secretKey": "ZZZZ",
         "address": [
           "172.16.0.2/32",
-          "2606:4700:110:86b0:c0c2:dcd4:cc8:8510/128"
+          "ZZZZ/128"
         ],
         "peers": [
           {
-            "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+            "publicKey": "ZZZZ",
             "allowedIPs": [
               "0.0.0.0/0",
               "::/0"
