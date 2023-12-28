@@ -152,10 +152,12 @@
     "rules": [
       {
         "type": "field",
-        "outboundTag": "blocked",
-        "protocol": [
-          "bittorrent"
-        ]
+        "domain": [
+          "geosite:category-porn",
+          "geosite:category-ads-all",
+          "geosite:category-ads-ir",
+        ],
+        "outboundTag": "block"
       },
       {
         "type": "field",
@@ -166,11 +168,10 @@
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:category-porn",
-          "geosite:category-ads-all"
-        ],
-        "outboundTag": "block"
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
       }
     ]
   },
