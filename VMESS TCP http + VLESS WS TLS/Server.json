@@ -128,11 +128,15 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-         "type": "field",
-         "outboundTag": "blocked",
-         "protocol": [
-           "bittorrent"
-         ]
+        "type": "field",
+        "domain": [
+          "geosite:category-porn",
+          "geosite:category-ads-all",
+          "geosite:category-ir",
+          "geosite:category-ads-ir",
+          "domain:ir"
+        ],
+        "outboundTag": "block"
       },
       {
         "type": "field",
@@ -144,13 +148,12 @@
         "outboundTag": "block"
       },
       {
-        "type": "field",
-        "domain": [
-          "geosite:category-porn",
-          "geosite:category-ads-all"
-        ],
-        "outboundTag": "block"
-      }
+         "type": "field",
+         "outboundTag": "blocked",
+         "protocol": [
+           "bittorrent"
+         ]
+      },
     ]
   },
   "stats": {},
