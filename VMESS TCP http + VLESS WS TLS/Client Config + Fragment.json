@@ -97,8 +97,8 @@
           },
           "path": "/c6fbde88-c164-4d25-87dd-61f8f16893cd?ed=2048"
         },
-        "sockopt": {          
-          "dialerProxy": "direct"        
+        "sockopt": {
+          "dialerProxy": "direct"
         }
       },
       "tag": "proxy"
