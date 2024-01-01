@@ -1,0 +1,174 @@
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "https://1.1.1.1/dns-query",
+      {
+        "address": "223.5.5.5",
+        "domains": [
+          "geosite:private",
+          "geosite:category-ir",
+          "domain:ir"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "port": 53
+      }
+    ]
+  },
+  "fakedns": [
+    {
+      "ipPool": "198.18.0.0/15",
+      "poolSize": 10000
+    }
+  ],
+  "inbounds": [
+    {
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "fakedns"
+        ],
+        "enabled": true
+      },
+      "tag": "socks"
+    },
+    {
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.speedtest.net",
+            "port": XXXX,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "",
+                "id": "XXXX",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "sockopt": {
+          "dialerProxy": "direct"
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "fingerprint": "chrome",
+          "publicKey": "",
+          "serverName": "XXXX",
+          "shortId": "",
+          "show": false,
+          "spiderX": ""
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "XXXX"
+          },
+          "path": "/XXXX?ed=2048"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "settings": {
+        "domainStrategy": "AsIs",
+        "fragment": {
+          "packets": "tlshello",
+          "length": "100-200",
+          "interval": "10-20"
+        }
+      }
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    },
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "223.5.5.5"
+        ],
+        "outboundTag": "direct",
+        "port": "53",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "geosite:private",
+          "geosite:category-ir",
+          "domain:ir"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "geoip:private",
+          "geoip:ir"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      }
+    ]
+  },
+  "stats": {}
+}
