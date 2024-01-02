@@ -1,0 +1,196 @@
+{
+    "dns": {
+        "disableFallback": true,
+        "servers": [
+            {
+                "address": "https://1.1.1.1/dns-query",
+                "domains": [
+                ],
+                "queryStrategy": ""
+            },
+            {
+                "address": "localhost",
+                "domains": [
+                    "full:ns.freedomforus.pw",
+                    "geosite:ir",
+                    "domain:ir"
+                ],
+                "queryStrategy": ""
+            }
+        ],
+        "tag": "dns"
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 2080,
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true,
+                "metadataOnly": false,
+                "routeOnly": true
+            },
+            "tag": "socks-in"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 2081,
+            "protocol": "http",
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ],
+                "enabled": true,
+                "metadataOnly": false,
+                "routeOnly": true
+            },
+            "tag": "http-in"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "outbounds": [
+        {
+            "domainStrategy": "AsIs",
+            "flow": null,
+            "mux": {
+                "concurrency": 8,
+                "enabled": true,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": "reject"
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "ns.freedomforus.pw",
+                        "port": 443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "",
+                                "id": "65759e2a-c118-4494-8b74-55fea0ad2369"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "sockopt": {
+                    "dialerProxy": "direct"
+                },
+                "tlsSettings": {
+                    "alpn": [
+                        "h2",
+                        "http/1.1"
+                    ],
+                    "fingerprint": "chrome",
+                    "serverName": "q0Y9d8L7w6F5b4_-x3V2p1E3g2I1j4R7s6H9o8K5l4M3n2U1T0c9X8.freedomforus.pw"
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "q0Y9d8L7w6F5b4_-x3V2p1E3g2I1j4R7s6H9o8K5l4M3n2U1T0c9X8.freedomforus.pw"
+                    },
+                    "path": "/ws-port/54392?ed=2048"
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "AsIs",
+                "fragment": {
+                    "interval": "10-20",
+                    "length": "100-200",
+                    "packets": "tlshello"
+                }
+            },
+            "tag": "direct"
+        },
+        {
+            "domainStrategy": "",
+            "protocol": "freedom",
+            "tag": "bypass"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        },
+        {
+            "protocol": "dns",
+            "proxySettings": {
+                "tag": "proxy",
+                "transportLayer": true
+            },
+            "settings": {
+                "address": "8.8.8.8",
+                "network": "tcp",
+                "port": 53,
+                "userLevel": 1
+            },
+            "tag": "dns-out"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "1": {
+                "connIdle": 30
+            }
+        },
+        "system": {
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "inboundTag": [
+                    "socks-in",
+                    "http-in"
+                ],
+                "outboundTag": "dns-out",
+                "port": "53",
+                "type": "field"
+            },
+            {
+                "ip": [
+                    "geoip:ir",
+                    "geoip:private"
+                ],
+                "outboundTag": "bypass",
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "geosite:ir",
+                    "domain:ir"
+                ],
+                "outboundTag": "bypass",
+                "type": "field"
+            },
+            {
+                "outboundTag": "proxy",
+                "port": "0-65535",
+                "type": "field"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
