@@ -121,7 +121,7 @@
       "settings": {
         "domainStrategy": "UseIP"
       },
-    "tag": "direct"
+      "tag": "direct"
     },
     {
       "protocol": "blackhole",
