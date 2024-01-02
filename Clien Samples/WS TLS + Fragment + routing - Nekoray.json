@@ -11,9 +11,9 @@
             {
                 "address": "localhost",
                 "domains": [
-                    "full:ns.freedomforus.pw",
+                    "full:XXXX",
                     "geosite:ir",
-                    "domain:ir"
+                    "domain:.ir"
                 ],
                 "queryStrategy": ""
             }
@@ -179,7 +179,7 @@
             {
                 "domain": [
                     "geosite:ir",
-                    "domain:ir"
+                    "domain:.ir"
                 ],
                 "outboundTag": "bypass",
                 "type": "field"
