@@ -79,7 +79,7 @@
       "streamSettings": {
         "network": "ws",
         "sockopt": {
-          "dialerProxy": "direct"
+          "dialerProxy": "fragment"
         },
         "security": "tls",
         "tlsSettings": {
@@ -106,7 +106,7 @@
     },
     {
       "protocol": "freedom",
-      "tag": "direct",
+      "tag": "fragment",
       "settings": {
         "domainStrategy": "AsIs",
         "fragment": {
@@ -115,6 +115,13 @@
           "interval": "10-20"
         }
       }
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+    "tag": "direct"
     },
     {
       "protocol": "blackhole",
