@@ -10,7 +10,7 @@
         "domains": [
           "geosite:private",
           "geosite:category-ir",
-          "domain:ir"
+          "domain:.ir"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -162,7 +162,7 @@
         "domain": [
           "geosite:private",
           "geosite:category-ir",
-          "domain:ir"
+          "domain:.ir"
         ],
         "outboundTag": "direct",
         "type": "field"
