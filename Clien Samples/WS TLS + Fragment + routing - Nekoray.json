@@ -74,13 +74,13 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "ns.freedomforus.pw",
-                        "port": 443,
+                        "address": "www.speedtest.net",
+                        "port": XXXX,
                         "users": [
                             {
                                 "encryption": "none",
                                 "flow": "",
-                                "id": "65759e2a-c118-4494-8b74-55fea0ad2369"
+                                "id": "XXXX"
                             }
                         ]
                     }
@@ -98,13 +98,13 @@
                         "http/1.1"
                     ],
                     "fingerprint": "chrome",
-                    "serverName": "q0Y9d8L7w6F5b4_-x3V2p1E3g2I1j4R7s6H9o8K5l4M3n2U1T0c9X8.freedomforus.pw"
+                    "serverName": "XXXX"
                 },
                 "wsSettings": {
                     "headers": {
-                        "Host": "q0Y9d8L7w6F5b4_-x3V2p1E3g2I1j4R7s6H9o8K5l4M3n2U1T0c9X8.freedomforus.pw"
+                        "Host": "XXXX"
                     },
-                    "path": "/ws-port/54392?ed=2048"
+                    "path": "/XXXX?ed=2048"
                 }
             },
             "tag": "proxy"
