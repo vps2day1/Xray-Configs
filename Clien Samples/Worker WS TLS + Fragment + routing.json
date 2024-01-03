@@ -6,7 +6,7 @@
       "domain:googleapis.cn": "googleapis.com"
     },
     "servers": [
-      "https://1.1.1.1/dns-query",
+      "https://dns.adguard.com/dns-query",
       {
         "address": "223.5.5.5",
         "domains": [
