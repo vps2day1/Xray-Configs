@@ -11,7 +11,7 @@
         "clients": [
           {
             "email": "Sarina",
-            "id": "28208267-f427-4a8f-a6de-f641a7f04793"
+            "id": "XXXX"
           }
         ]
       },
@@ -88,7 +88,7 @@
           {
             "email": "Sarina-2",
             "flow": "",
-            "id": "9c2c0bbc-2b26-4567-9f18-b5b369085719"
+            "id": "XXXX"
           }
         ],
         "decryption": "none",
@@ -115,7 +115,7 @@
         "wsSettings": {
           "acceptProxyProtocol": false,
           "headers": {},
-          "path": "/c6fbde88-c164-4d25-87dd-61f8f16893cd"
+          "path": "/XXXX"
         }
       },
       "tag": "inbound-54321"
