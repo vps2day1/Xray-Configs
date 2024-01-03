@@ -1,6 +1,8 @@
 {
   "dns": {
     "hosts": {
+      "geosite:category-ads-all": "127.0.0.1",
+      "geosite:category-ads-ir": "127.0.0.1",
       "domain:googleapis.cn": "googleapis.com"
     },
     "servers": [
@@ -173,6 +175,14 @@
           "geoip:ir"
         ],
         "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "geosite:category-ads-all",
+          "geosite:category-ads-ir"
+        ],
+        "outboundTag": "block",
         "type": "field"
       }
     ]
