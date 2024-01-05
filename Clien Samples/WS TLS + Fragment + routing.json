@@ -6,7 +6,7 @@
         "servers": [
             "https://1.1.1.1/dns-query",
             {
-                "address": "8.8.8.8",
+                "address": "1.1.1.1",
                 "domains": [
                     "geosite:private",
                     "geosite:category-ir",
