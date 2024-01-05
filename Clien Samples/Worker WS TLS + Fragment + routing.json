@@ -161,7 +161,7 @@
         "rules": [
             {
                 "ip": [
-                    "223.5.5.5"
+                    "1.1.1.1"
                 ],
                 "outboundTag": "direct",
                 "port": "53",
