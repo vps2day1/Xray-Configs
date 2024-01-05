@@ -8,7 +8,7 @@
         "servers": [
             "https://94.140.14.14/dns-query",
             {
-                "address": "8.8.8.8",
+                "address": "1.1.1.1",
                 "domains": [
                     "geosite:private",
                     "geosite:category-ir",
