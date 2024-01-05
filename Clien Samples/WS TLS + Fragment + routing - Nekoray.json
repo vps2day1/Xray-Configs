@@ -11,7 +11,7 @@
             {
                 "address": "localhost",
                 "domains": [
-                    "full:XXXX",
+                    "full:www.speedtest.net",
                     "geosite:ir",
                     "domain:.ir"
                 ],
