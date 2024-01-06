@@ -844,7 +844,7 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 function getVLESSConfig(userID, hostName) {
-  const pvlesswstls = `vless://${userID}@www.speedtest.net:443?encryption=none&security=tls&type=ws&host=${randomUpperCase(hostName)}&sni=${randomUpperCase(hostName)}&fp=random&alpn=h2,http/1.1&path=%2F%3Fed%3D2048#Worker-TLS-${hostName}`;
+  const pvlesswstls = `vless://${userID}@www.speedtest.net:443?encryption=none&security=tls&type=ws&host=${randomUpperCase(hostName)}&sni=${randomUpperCase(hostName)}&fp=random&alpn=h2,http/1.1&path=%2F%3Fed%3D2048#Worker-TLS - Bia Pain Bache`;
 
   return `${pvlesswstls}`;
 }
