@@ -9,7 +9,7 @@
                 "queryStrategy": ""
             },
             {
-                "address": "localhost",
+                "address": "1.1.1.1",
                 "domains": [
                     "full:www.speedtest.net",
                     "geosite:ir",
@@ -159,6 +159,13 @@
     "routing": {
         "domainStrategy": "AsIs",
         "rules": [
+            {
+                "ip": [
+                    "1.1.1.1"
+                ],
+                "outboundTag": "direct",
+                "type": "field"
+            },
             {
                 "inboundTag": [
                     "socks-in",
