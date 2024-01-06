@@ -1,6 +1,3 @@
-// @ts-nocheck
-// <!--GAMFC-->version base on commit 43fad05dcdae3b723c53c226f8181fc5bd47223e, time is 2023-06-22 15:20:02 UTC<!--GAMFC-END-->.
-// @ts-ignore
 import { connect } from "cloudflare:sockets";
 
 // How to generate your own UUID:
@@ -16,7 +13,7 @@ const proxyIPs = [
   "8.219.12.152",
   "8.219.201.174",
   "8.222.138.164",
-]; // ['cdn-all.xn--b6gac.eu.org', 'cdn.xn--b6gac.eu.org', 'cdn-b100.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org', 'cdn.anycast.eu.org'];
+];
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 
 let dohURL = "https://cloudflare-dns.com/dns-query"; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
