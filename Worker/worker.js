@@ -1046,7 +1046,7 @@ function getVLESSConfig(userID, hostName) {
         "stats": {}
     }`;
 
-  return pvlesswstls + headerBlock + fragmentConfig;
+  return pvlesswstls + headerBlock + fragmentConfig.replace(/\s/g, '');
 }
 
 function randomUpperCase(str) {
