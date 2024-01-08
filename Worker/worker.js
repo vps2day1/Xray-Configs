@@ -1,3 +1,6 @@
+// @ts-nocheck
+// <!--GAMFC-->version base on commit 43fad05dcdae3b723c53c226f8181fc5bd47223e, time is 2023-06-22 15:20:02 UTC<!--GAMFC-END-->.
+// @ts-ignore
 import { connect } from "cloudflare:sockets";
 
 // How to generate your own UUID:
@@ -16,7 +19,7 @@ const proxyIPs = [
 ];
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 
-let dohURL = "https://cloudflare-dns.com/dns-query"; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
+let dohURL = "https://cloudflare-dns.com/dns-query";
 
 // v2board api environment variables
 let nodeId = ""; // 1
@@ -841,7 +844,7 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 function getVLESSConfig(userID, hostName) {
-  const pvlesswstls = `vless://${userID}@www.speedtest.net:443?encryption=none&security=tls&type=ws&host=${randomUpperCase(hostName)}&sni=${randomUpperCase(hostName)}&fp=random&alpn=h2,http/1.1&path=%2F%3Fed%3D2048#Worker-TLS - Bia Pain Bache`;
+  const pvlesswstls = `vless://${userID}@www.speedtest.net:443?encryption=none&security=tls&type=ws&host=${randomUpperCase(hostName)}&sni=${randomUpperCase(hostName)}&fp=randomized&alpn=h2,http/1.1&path=%2F${generateRandomString(16)}%3Fed%3D2048#Worker-TLS - Bia Pain Bache`;
 
   return `${pvlesswstls}`;
 }
@@ -851,5 +854,18 @@ function randomUpperCase(str) {
   for (let i = 0; i < str.length; i++) {
     result += Math.random() < 0.5 ? str[i].toUpperCase() : str[i];
   }
+  return result;
+}
+
+function generateRandomString(length) {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789---___";
+  let result = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+
   return result;
 }
